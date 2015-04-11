@@ -24,6 +24,7 @@ MongoClient.connect(url, function (err, _db) {
 sub.subscribe("article:inserted");
 
 sub.on("message", function (channel, json) {
+    console.log(json);
     io.sockets.emit('article:inserted', json);
 });
 

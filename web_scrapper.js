@@ -72,7 +72,9 @@ var scrapUrl = function (media, link, tags) {
             collection.insert(article, function (err, result) {
                 console.log("article", article.link);
 
-                pub.publish("article:inserted", JSON.stringify(result));
+                collection.findOne({link: article.link}, function (err, article) {
+                    pub.publish("article:inserted", JSON.stringify(article));
+                });
 
             });
 
