@@ -32,7 +32,25 @@ module.exports.medias = {
             var title = $('article h1').text();
             var content = [];
 
-            $('#mainentrycontent').each(function (index) {
+            $('#mainentrycontent p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content};
+        }
+    },
+    "liberation": {
+        feeds: [
+            {link: 'http://liberation.fr.feedsportal.com/c/32268/fe.ed/rss.liberation.fr/rss/latest/', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var content = [];
+
+            $('#article-body p').each(function (index) {
                 var text = $(this).text();
                 if (text.length < 3) return;
                 content.push(text);
