@@ -3,8 +3,7 @@ var pub = redis.createClient();
 var sub = redis.createClient();
 var scraperjs = require('scraperjs');
 var RedisLockingWorker = require("redis-locking-worker");
-var MongoClient = require('mongodb').MongoClient
-    , assert = require('assert');
+var MongoClient = require('mongodb').MongoClient;
 
 
 // Connection URL
@@ -53,7 +52,7 @@ function processEvent(data) {
 
 var scrapUrl = function (media, link, tags) {
     if(medias[media] === undefined) return;
-    
+
     scraperjs.StaticScraper.create(link)
         .scrape(medias[media].scraper, function (data) {
             console.log("scrapped", link);
@@ -72,6 +71,9 @@ var scrapUrl = function (media, link, tags) {
 
             collection.insert(article, function (err, result) {
                 console.log("article", article.link);
+
+                pub.publish("article:inserted", JSON.stringify(result));
+
             });
 
         }).onError(function (err) {

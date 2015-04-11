@@ -15,6 +15,9 @@
     "cron": "",
     "scraperjs": "",
     "mongodb": "",
-    "redis-locking-worker": "git://github.com/yahoo/redis-locking-worker.git"
+    "redis-locking-worker": "git://github.com/yahoo/redis-locking-worker.git",
+    "express": "",
+    "body-parser": "",
+    "socket.io": ""
   }
 }
