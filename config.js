@@ -140,5 +140,24 @@ module.exports.medias = {
 
             return {title: title, content: content, img: img};
         }
+    },
+    "le-point": {
+        feeds: [
+            {link: 'http://www.lepoint.fr/rss.xml', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var img = $("article figure img").attr("src");
+            var content = [];
+
+            $('.articleBody p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content, img: img};
+        }
     }
 };
