@@ -11,7 +11,7 @@ module.exports.medias = {
         ],
         scraper: function ($) {
 
-            var title = $('.article_normal h1').text();
+            var title = $('article h1').text();
             var img = $(".illustration_haut img").attr("src");
             var content = [];
 
