@@ -4,12 +4,16 @@
   "description": "This Node.JS projects aims to subscribe to RSS feeds, and can scrap web pages using phantomjs to save full-content into a MongoDb database",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "lint": "npm install && grunt lint",
+    "test": "npm install && grunt test",
     "start": "node web_scrapper.js & node rss_scrapper.js"
   },
   "author": "Baptiste Jamin <baptistjamin@gmail.com> (http://jamin.me/)",
   "license": "MIT",
   "dependencies": {
+    "grunt": "",
+    "grunt-contrib-jshint": "",
+    "grunt-shell": "",
     "feed-read": "",
     "redis": "",
     "cron": "",

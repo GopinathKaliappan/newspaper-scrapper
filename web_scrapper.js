@@ -18,7 +18,7 @@ var medias = require('./config.js').medias;
 sub.subscribe("article:publish");
 
 sub.on("message", function (channel, json) {
-    var json = JSON.parse(json);
+    json = JSON.parse(json);
     processEvent(json);
 });
 
@@ -48,10 +48,10 @@ function processEvent(data) {
         //console.log("[redis-client] Status message from lock %s: %s", worker.lockKey, message);
     });
     worker.acquire();
-};
+}
 
 var scrapUrl = function (media, link, tags) {
-    if(medias[media] === undefined) return;
+    if (medias[media] === undefined) return;
 
     scraperjs.StaticScraper.create(link)
         .scrape(medias[media].scraper, function (data) {
@@ -81,4 +81,4 @@ var scrapUrl = function (media, link, tags) {
         }).onError(function (err) {
             console.log(err);
         });
-}
+};

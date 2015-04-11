@@ -7,7 +7,7 @@ var medias = require('./config.js').medias;
 var get_feed = function (media, rss_link, tags) {
     feed(rss_link, function (err, articles) {
         if (err) throw err;
-        for (index in articles) {
+        for (var index in articles) {
             publish(media, articles[index].link, tags);
         }
     });
@@ -25,7 +25,7 @@ var publish = function (media, link, tags) {
             }));
         }
     });
-}
+};
 
 var scrap = function () {
     console.log('\033[2J');
@@ -33,10 +33,10 @@ var scrap = function () {
         var feeds = medias[media_title].feeds;
 
         for (var feeds_index in feeds) {
-            get_feed(media_title, feeds[feeds_index].link, feeds[feeds_index].tags)
+            get_feed(media_title, feeds[feeds_index].link, feeds[feeds_index].tags);
         }
     }
-}
+};
 
 var CronJob = require('cron').CronJob;
 new CronJob('1 * * * *', function () {
