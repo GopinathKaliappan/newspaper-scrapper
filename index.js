@@ -42,11 +42,7 @@ app.get('/articles/', bodyparser, function (req, res) {
 
 app.get('/article/:id', bodyparser, function (req, res) {
 
-    console.log(req.params.id);
-
     var collection = db.collection('articles');
-
-    new ObjectId(req.params.id)
 
     collection.findOne({_id: new ObjectId(req.params.id)}, function (err, article) {
         console.log(err);
