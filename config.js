@@ -77,4 +77,22 @@ module.exports.medias = {
             return {title: title, content: content};
         }
     },
+    "l-express": {
+        feeds: [
+            {link: 'http://www.lexpress.fr/rss/alaune.xml', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var content = [];
+
+            $('.article_container p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content};
+        }
+    }
 };
