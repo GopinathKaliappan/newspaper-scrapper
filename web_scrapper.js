@@ -52,6 +52,8 @@ function processEvent(data) {
 };
 
 var scrapUrl = function (media, link, tags) {
+    if(medias[media] === undefined) return;
+    
     scraperjs.StaticScraper.create(link)
         .scrape(medias[media].scraper, function (data) {
             console.log("scrapped", link);

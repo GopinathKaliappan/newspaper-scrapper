@@ -102,5 +102,43 @@ module.exports.medias = {
 
             return {title: title, content: content, img: img};
         }
+    },
+    "parisien": {
+        feeds: [
+            {link: 'http://www.leparisien.fr/actualites-a-la-une.rss.xml', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var img = $("article figure img").attr("src");
+            var content = [];
+
+            $('#contTexte p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content, img: img};
+        }
+    },
+    "france-tv": {
+        feeds: [
+            {link: 'http://www.francetvinfo.fr/titres.rss', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var img = $("article figure img").attr("src");
+            var content = [];
+
+            $('#middleColumn p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content, img: img};
+        }
     }
 };
