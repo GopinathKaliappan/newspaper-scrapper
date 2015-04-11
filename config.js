@@ -58,5 +58,23 @@ module.exports.medias = {
 
             return {title: title, content: content};
         }
-    }
+    },
+    "figaro": {
+        feeds: [
+            {link: 'http://feeds.lefigaro.fr/c/32266/f/438191/index.rss', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var content = [];
+
+            $('.fig-article-body').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content};
+        }
+    },
 };
