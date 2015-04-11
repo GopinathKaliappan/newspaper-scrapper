@@ -159,5 +159,43 @@ module.exports.medias = {
 
             return {title: title, content: content, img: img};
         }
+    },
+    "le-nouvel-observateur": {
+        feeds: [
+            {link: 'http://rss.nouvelobs.com/c/32262/fe.ed/tempsreel.nouvelobs.com/rss.xml', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var img = $("article .ultimedia_image img").attr("src");
+            var content = [];
+
+            $('.obs-article-body p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content, img: img};
+        }
+    },
+    "ouest-france": {
+        feeds: [
+            {link: 'http://www.ouest-france.fr/rss.xml', tags: ['france']}
+        ],
+        scraper: function ($) {
+
+            var title = $('article h1').text();
+            var img = $("article figure img").attr("src");
+            var content = [];
+
+            $('.article-content p').each(function (index) {
+                var text = $(this).text();
+                if (text.length < 3) return;
+                content.push(text);
+            });
+
+            return {title: title, content: content, img: img};
+        }
     }
 };
