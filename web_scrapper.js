@@ -63,7 +63,8 @@ var scrapUrl = function (media, link, tags) {
             article.tags = tags;
             article.title = data.title;
             article.content = data.content;
-
+            article.img = data.img;
+            article.time = new Date().getTime();
             var collection = db.collection('articles');
 
 

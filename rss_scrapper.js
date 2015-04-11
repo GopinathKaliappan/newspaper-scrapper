@@ -28,7 +28,7 @@ var publish = function (media, link, tags) {
 }
 
 var scrap = function () {
-
+    console.log('\033[2J');
     for (var media_title in medias) {
         var feeds = medias[media_title].feeds;
 

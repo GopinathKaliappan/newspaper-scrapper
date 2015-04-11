@@ -12,6 +12,7 @@ module.exports.medias = {
         scraper: function ($) {
 
             var title = $('.article_normal h1').text();
+            var img = $(".illustration_haut img").attr("src");
             var content = [];
 
             $('#articleBody p').each(function (index) {
@@ -20,7 +21,7 @@ module.exports.medias = {
                 content.push(text);
             });
 
-            return {title: title, content: content};
+            return {title: title, content: content, img: img};
         }
     },
     "huffington-post": {
@@ -30,6 +31,7 @@ module.exports.medias = {
         scraper: function ($) {
 
             var title = $('article h1').text();
+            var img = $(".img-caption img").attr("src");
             var content = [];
 
             $('#mainentrycontent p').each(function (index) {
@@ -38,16 +40,20 @@ module.exports.medias = {
                 content.push(text);
             });
 
-            return {title: title, content: content};
+            return {title: title, content: content, img: img};
         }
     },
     "liberation": {
         feeds: [
-            {link: 'http://liberation.fr.feedsportal.com/c/32268/fe.ed/rss.liberation.fr/rss/latest/', tags: ['france']}
+            {link: 'http://liberation.fr.feedsportal.com/c/32268/fe.ed/rss.liberation.fr/rss/latest/', tags: ['france']},
+            {link: 'http://liberation.fr.feedsportal.com/c/32268/fe.ed/rss.liberation.fr/rss/13/', tags: ['economy']},
+            {link: 'http://liberation.fr.feedsportal.com/c/32268/fe.ed/rss.liberation.fr/rss/10/', tags: ['world']}
+
         ],
         scraper: function ($) {
 
             var title = $('article h1').text();
+            var img = $(".img-caption img").attr("src");
             var content = [];
 
             $('#article-body p').each(function (index) {
@@ -56,7 +62,7 @@ module.exports.medias = {
                 content.push(text);
             });
 
-            return {title: title, content: content};
+            return {title: title, content: content, img: img};
         }
     },
     "figaro": {
@@ -66,6 +72,7 @@ module.exports.medias = {
         scraper: function ($) {
 
             var title = $('article h1').text();
+            var img = $(".banner-headline img").attr("src");
             var content = [];
 
             $('.fig-article-body').each(function (index) {
@@ -74,7 +81,7 @@ module.exports.medias = {
                 content.push(text);
             });
 
-            return {title: title, content: content};
+            return {title: title, content: content, img: img};
         }
     },
     "l-express": {
@@ -84,6 +91,7 @@ module.exports.medias = {
         scraper: function ($) {
 
             var title = $('article h1').text();
+            var img = $(".ouverture img").attr("src");
             var content = [];
 
             $('.article_container p').each(function (index) {
@@ -92,7 +100,7 @@ module.exports.medias = {
                 content.push(text);
             });
 
-            return {title: title, content: content};
+            return {title: title, content: content, img: img};
         }
     }
 };
