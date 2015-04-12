@@ -55,7 +55,6 @@ var scrapUrl = function (media, link, tags) {
 
     scraperjs.StaticScraper.create(link)
         .scrape(medias[media].scraper, function (data) {
-            console.log("scrapped", link);
             if (data === null || data === undefined || data.title.length < 10) return;
 
             var article = {};
@@ -70,7 +69,7 @@ var scrapUrl = function (media, link, tags) {
 
 
             collection.insert(article, function (err, result) {
-                console.log("article", article.link);
+                console.log("inserted", article.link);
 
                 collection.findOne({link: article.link}, function (err, article) {
                     pub.publish("article:inserted", JSON.stringify(article));
