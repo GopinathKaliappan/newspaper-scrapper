@@ -28,7 +28,7 @@ var publish = function (media, link, tags) {
 };
 
 var scrap = function () {
-    console.log('\033[2J');
+    console.log("Get RSS Feed");
     for (var media_title in medias) {
         var feeds = medias[media_title].feeds;
 
@@ -39,7 +39,7 @@ var scrap = function () {
 };
 
 var CronJob = require('cron').CronJob;
-new CronJob('1 * * * *', function () {
+new CronJob('1 * * * * *', function () {
     scrap();
 }, null, true, 'Europe/Paris');
 scrap();
