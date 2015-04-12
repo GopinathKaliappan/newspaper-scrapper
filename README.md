@@ -23,6 +23,17 @@ Content is injected into a MongoDB Database. A Redis channel is used to communic
 
 You can configure RSS feeds using the config.js file & adapt the phantomJS scrapper to other websites.
 
-An exemple is provided for website "Le Monde" (french)
+## Scrapped websites
+
+* Le Monde
+* Huffington Post
+* Libération
+* Figaro
+* L'express
+* Le parisien
+* France TV
+* Le point 
+* Le nouvel obs
+* Ouest France
 
 
